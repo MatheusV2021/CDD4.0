@@ -121,3 +121,60 @@ class Retangulo(Forma):
     def calcularPerimetro(self, base, altura):
         self.perimetro = 2 * (base+altura)
         print(f"O perimetro é {self.perimetro}")
+
+class Ingresso():
+    def __init__(self, valor):
+        self.valor = valor
+    def imprimir(self):
+        print(f"Valor do ingresso comum: {self.valor}")
+
+class Vip(Ingresso):
+    def __init__(self, valor):
+        super().__init__(valor)
+
+    def imprimirVIP(self):
+        vip = self.valor+50
+        print(f"Valor do ingresso VIP é: {vip}")
+
+class Atleta():
+    def __init__(self, peso):
+        self.peso = peso
+        self.aposentado = False
+        self.aquecendo = False
+
+
+    def aposentar(self):
+        if self.aposentado == False:
+            print("O Atleta está se aposentando...")
+            self.aposentado = True
+        else:
+            print("O Atleta já está aposentado.")
+    def aquecer(self):
+        if self.aposentado == False:
+            if self.aquecendo == False:
+                print("O Atleta está aquecendo...")
+                self.aquecendo = True
+            else:
+                print("O Atleta já está aquecido.")
+        else:
+            print("O Atleta está aposentado.")
+
+class Corredor(Atleta):
+    def __init__(self, peso):
+        super().__init__(peso)
+        self.correndo = False
+    def correr(self):
+        if self.aquecendo == True:
+            if self.correndo == False:
+                print("O Corredor começou a correr.")
+                self.correndo = True
+            else:
+                print("O Corredor já está correndo.")
+        else:
+            print("O Corredor não pode correr, pois não aqueceu.")
+    def parardecorrer(self):
+        if self.correndo == True:
+            print("O Corredor parou de correr.")
+            self.correndo = False
+        else:
+            print("O Corredor não está correndo.")
